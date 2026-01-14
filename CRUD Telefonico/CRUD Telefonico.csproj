@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.3.10" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.3.10" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.10" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.10" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.3.10">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="MessageBox.Avalonia" Version="3.3.1.1" />
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.1" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
+        <PackageReference Include="ShadUI" Version="0.1.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\edit.png" />
+      <AvaloniaResource Include="Assets\edit.png" />
+      <None Remove="Assets\register.png" />
+      <AvaloniaResource Include="Assets\register.png" />
+      <None Remove="Assets\remove.png" />
+      <AvaloniaResource Include="Assets\remove.png" />
+      <None Remove="Assets\Inter_24pt-Light.ttf" />
+      <AvaloniaResource Include="Assets\Inter_24pt-Light.ttf" />
+      <None Remove="Assets\Inter_24pt-Regular.ttf" />
+      <AvaloniaResource Include="Assets\Inter_24pt-Regular.ttf" />
+      <None Remove="Assets\Inter_28pt-Bold.ttf" />
+      <AvaloniaResource Include="Assets\Inter_28pt-Bold.ttf" />
+      <None Remove="Assets\ComicNeue-Bold.ttf" />
+      <AvaloniaResource Include="Assets\ComicNeue-Bold.ttf" />
+    </ItemGroup>
+</Project>

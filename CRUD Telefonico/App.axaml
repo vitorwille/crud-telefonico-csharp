@@ -1,0 +1,19 @@
+<Application
+    RequestedThemeVariant="Default"
+    x:Class="CRUD_Telefonico.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:shadUi="clr-namespace:ShadUI;assembly=ShadUI"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
+
+    <Application.Styles>
+        <FluentTheme />
+        <shadUi:ShadTheme />
+    </Application.Styles>
+    <Application.Resources>
+        <FontFamily x:Key="Comic">avares://CRUD Telefonico/Assets/#Comic</FontFamily>
+        <FontFamily x:Key="Inter-Light">avares://CRUD Telefonico/Assets/Inter_24pt-Light.ttf</FontFamily>
+        <FontFamily x:Key="Inter-Regular">avares://CRUD Telefonico/Assets/Inter_24pt-Regular.ttf</FontFamily>
+        <FontFamily x:Key="Inter-Bold">avares://CRUD Telefonico/Assets/Inter_28pt-Bold.ttf</FontFamily>
+    </Application.Resources>
+</Application>

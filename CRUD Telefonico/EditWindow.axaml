@@ -1,0 +1,93 @@
+<Window
+    Background="#202020"
+    CanMaximize="False"
+    CanResize="False"
+    Foreground="#f0f0f0"
+    Height="313"
+    Title="Edição de Contato"
+    Width="500"
+    mc:Ignorable="d"
+    x:Class="CRUD_Telefonico.EditWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:crudTelefonico="clr-namespace:CRUD_Telefonico"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:themes="clr-namespace:ShadUI;assembly=ShadUI"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.Styles>
+        <FluentTheme />
+        <themes:ShadTheme />
+    </Window.Styles>
+    <StackPanel>
+        <TextBlock
+            FontFamily="{StaticResource Inter-Bold}"
+            FontSize="23"
+            HorizontalAlignment="Left"
+            Margin="16,08,0,0"
+            Text="Editar contato existente"
+            VerticalAlignment="Top" />
+        <Separator Background="rgb(80,80,80)" Margin="15,10,15,10" />
+        <Canvas>
+            <TextBox
+                Canvas.Left="15"
+                Classes="Clearable"
+                FontFamily="{StaticResource Inter-Light}"
+                Name="txtNome"
+                UseFloatingWatermark="True"
+                Watermark="Nome *"
+                Width="225" />
+            <TextBox
+                Canvas.Right="15"
+                Classes="Clearable"
+                FontFamily="{StaticResource Inter-Light}"
+                Name="txtTelefone"
+                UseFloatingWatermark="True"
+                Watermark="Telefone *"
+                Width="225" />
+            <TextBox
+                Canvas.Right="15"
+                Canvas.Top="75"
+                Classes="Clearable"
+                Focusable="False"
+                FontFamily="{StaticResource Inter-Light}"
+                Foreground="rgb(135, 135, 135)"
+                IsReadOnly="True"
+                Name="txtId"
+                UseFloatingWatermark="True"
+                Watermark="ID"
+                Width="225" />
+            <TextBox
+                Canvas.Left="15"
+                Canvas.Top="75"
+                Classes="Clearable"
+                Focusable="False"
+                FontFamily="{StaticResource Inter-Light}"
+                Foreground="rgb(135, 135, 135)"
+                IsReadOnly="True"
+                Name="txtDtCriacao"
+                UseFloatingWatermark="True"
+                Watermark="Data de Criação"
+                Width="225" />
+            <Button
+                Background="#353535"
+                Canvas.Top="160"
+                Click="EditContact"
+                Foreground="#f0f0f0"
+                Height="34"
+                Margin="16,0,0,0"
+                Width="468">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="5"
+                    VerticalAlignment="Center">
+                    <Image
+                        Height="20"
+                        Source="avares://CRUD Telefonico/Assets/edit.png"
+                        Width="20" />
+                    <TextBlock FontFamily="{StaticResource Inter-Bold}" Text="Confirmar edição" />
+                </StackPanel>
+            </Button>
+        </Canvas>
+    </StackPanel>
+</Window>

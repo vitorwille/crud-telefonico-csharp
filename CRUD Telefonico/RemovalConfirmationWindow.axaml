@@ -1,0 +1,71 @@
+<Window
+    Background="#202020"
+    CanMaximize="False"
+    CanResize="False"
+    Foreground="#f0f0f0"
+    Height="210"
+    Title="Registro de Contato"
+    Width="380"
+    mc:Ignorable="d"
+    x:Class="CRUD_Telefonico.RemovalConfirmationWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:crudTelefonico="clr-namespace:CRUD_Telefonico"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:themes="clr-namespace:ShadUI;assembly=ShadUI"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.Styles>
+        <FluentTheme />
+        <themes:ShadTheme />
+    </Window.Styles>
+    <StackPanel>
+        <TextBlock
+            FontFamily="{StaticResource Inter-Bold}"
+            FontSize="23"
+            HorizontalAlignment="Left"
+            Margin="22,08,16,0"
+            Text="Confirmar exclusão de contato"
+            VerticalAlignment="Top" />
+        <Separator Background="rgb(80,80,80)" Margin="15,10,15,10" />
+        <Canvas>
+            <TextBlock
+                Canvas.Left="22"
+                Canvas.Top="0"
+                FontFamily="{StaticResource Inter-Light}"
+                FontSize="15"
+                HorizontalAlignment="Center"
+                Text="Deseja confirmar a exclusão do contato abaixo?"
+                VerticalAlignment="Center" />
+            <TextBlock
+                Canvas.Left="22"
+                Canvas.Top="30"
+                FontFamily="{StaticResource Inter-Light}"
+                FontSize="12"
+                HorizontalAlignment="Center"
+                MaxWidth="230"
+                Name="txtContatoConfirmar"
+                TextTrimming="CharacterEllipsis"
+                VerticalAlignment="Center" />
+            <Button
+                Background="#353535"
+                Canvas.Top="65"
+                Click="ConfirmExclusion"
+                Foreground="#f0f0f0"
+                Height="34"
+                Margin="16,0,0,0"
+                Width="345">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="5"
+                    VerticalAlignment="Center">
+                    <Image
+                        Height="20"
+                        Source="avares://CRUD Telefonico/Assets/remove.png"
+                        Width="20" />
+                    <TextBlock FontFamily="{StaticResource Inter-Bold}" Text="Desejo confirmar a exclusão" />
+                </StackPanel>
+            </Button>
+        </Canvas>
+    </StackPanel>
+</Window>

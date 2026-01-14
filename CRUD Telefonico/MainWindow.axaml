@@ -1,0 +1,128 @@
+<Window
+    Background="#202020"
+    CanMaximize="False"
+    CanResize="False"
+    Foreground="#f0f0f0"
+    Height="450"
+    Title="CRUD Telefônico - app multi-plataforma em C#"
+    Width="800"
+    mc:Ignorable="d"
+    x:Class="CRUD_Telefonico.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:crudTelefonico="clr-namespace:CRUD_Telefonico"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:themes="clr-namespace:ShadUI;assembly=ShadUI"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.Styles>
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+        <themes:ShadTheme />
+    </Window.Styles>
+    <StackPanel>
+        <TextBlock
+            FontFamily="{StaticResource Inter-Regular}"
+            FontSize="23"
+            HorizontalAlignment="Left"
+            Margin="16,08,0,0"
+            Text="CRUD Telefônico"
+            VerticalAlignment="Top" />
+        <TextBlock
+            FontFamily="{StaticResource Inter-Regular}"
+            FontSize="08"
+            HorizontalAlignment="Left"
+            Margin="713,-37,0,0"
+            Text="github.com/vitorwille"
+            VerticalAlignment="Top" />
+        <TextBlock
+            FontFamily="{StaticResource Inter-Light}"
+            FontSize="10"
+            HorizontalAlignment="Left"
+            Margin="198,-18,0,0"
+            Text="v2.0"
+            VerticalAlignment="Top" />
+        <Canvas>
+            <Button
+                Background="#353535"
+                Canvas.Left="16"
+                Canvas.Top="5"
+                Click="RegisterContactMenu"
+                Foreground="#f0f0f0"
+                Height="34"
+                Margin="0,7,0,0"
+                Width="240">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="5"
+                    VerticalAlignment="Center">
+                    <Image
+                        Height="20"
+                        Source="avares://CRUD Telefonico/Assets/register.png"
+                        Width="20" />
+                    <TextBlock FontFamily="{StaticResource Inter-Bold}" Text="Cadastrar contato" />
+                </StackPanel>
+            </Button>
+            <Button
+                Background="#353535"
+                Canvas.Left="279"
+                Canvas.Top="5"
+                Click="EditContactMenu"
+                Foreground="#f0f0f0"
+                Height="34"
+                Margin="0,7,0,0"
+                Width="240">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="5"
+                    VerticalAlignment="Center">
+                    <Image
+                        Height="20"
+                        Source="avares://CRUD Telefonico/Assets/edit.png"
+                        Width="20" />
+                    <TextBlock FontFamily="{StaticResource Inter-Bold}" Text="Editar contato" />
+                </StackPanel>
+            </Button>
+            <Button
+                Background="#353535"
+                Canvas.Left="542"
+                Canvas.Top="5"
+                Click="RemoveContact"
+                Foreground="#f0f0f0"
+                Height="34"
+                Margin="0,7,0,0"
+                Width="240">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="5"
+                    VerticalAlignment="Center">
+                    <Image
+                        Height="20"
+                        Source="avares://CRUD Telefonico/Assets/remove.png"
+                        Width="20" />
+                    <TextBlock FontFamily="{StaticResource Inter-Bold}" Text="Remover contato" />
+                </StackPanel>
+            </Button>
+        </Canvas>
+        <DataGrid
+            AutoGenerateColumns="False"
+            Background="#171717"
+            ColumnWidth="Auto"
+            FontFamily="{StaticResource Inter-Light}"
+            Foreground="#f0f0f0"
+            GridLinesVisibility="All"
+            Height="301"
+            HorizontalAlignment="Center"
+            Margin="0,56,0,0"
+            Name="dataGrid1"
+            VerticalAlignment="Top"
+            Width="766">
+            <DataGrid.Styles>
+                <Style Selector="DataGridRow:nth-child(odd)">
+                    <Setter Property="Background" Value="#222222" />
+                </Style>
+            </DataGrid.Styles>
+        </DataGrid>
+    </StackPanel>
+</Window>
