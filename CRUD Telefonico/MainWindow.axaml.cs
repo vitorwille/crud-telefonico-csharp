@@ -110,7 +110,7 @@ public partial class MainWindow : ShadUI.Window
         campoID.Header = "ID";
         campoID.Binding = new Binding("ID");
         campoID.IsReadOnly = true;
-        campoID.Width =  new DataGridLength(90, DataGridLengthUnitType.Pixel);
+        campoID.Width =  new DataGridLength(80, DataGridLengthUnitType.Pixel);
         dataGrid1.Columns.Add(campoID);
         
         // colunas - nome
@@ -126,7 +126,7 @@ public partial class MainWindow : ShadUI.Window
         campoTelefone.Header = "Telefone";
         campoTelefone.Binding = new Binding("Telefone");
         campoTelefone.IsReadOnly = true;
-        campoTelefone.Width = new DataGridLength(135, DataGridLengthUnitType.Pixel);
+        campoTelefone.Width = new DataGridLength(185, DataGridLengthUnitType.Pixel);
         dataGrid1.Columns.Add(campoTelefone);
         
         // colunas - data criacao
@@ -134,7 +134,7 @@ public partial class MainWindow : ShadUI.Window
         campoDataCriacao.Header = "Data de Criação";
         campoDataCriacao.Binding = new Binding("DataCriacao");
         campoDataCriacao.IsReadOnly = true;
-        campoDataCriacao.Width = new DataGridLength(145, DataGridLengthUnitType.Pixel);
+        campoDataCriacao.Width = new DataGridLength(123, DataGridLengthUnitType.Pixel);
         dataGrid1.Columns.Add(campoDataCriacao);
         
         dataGrid1.ItemsSource = ListaContatos;

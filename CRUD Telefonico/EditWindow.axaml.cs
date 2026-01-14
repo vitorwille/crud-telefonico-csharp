@@ -1,3 +1,5 @@
+using System;
+using System.Text.RegularExpressions;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -22,24 +24,70 @@ public partial class EditWindow : ShadUI.Window
         txtNome.Text = _contatoAntesEdicao.Nome;
         txtTelefone.Text = _contatoAntesEdicao.Telefone;
     }
+    
+    private bool MatchesRegexValidation()
+    {
+        string phoneForValidation = txtTelefone.Text;
+        if (Regex.IsMatch(phoneForValidation, @"^\d*$"))
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    private string FormatPhoneNumber(string phoneForValidation)
+    {
+        string plainNumbers = Regex.Replace(phoneForValidation, @"[^0-9]", "");
+
+        return plainNumbers.Length switch
+        {
+            10 =>
+                $"({plainNumbers.Substring(0, 2)}) {plainNumbers.Substring(2, 4)}-{plainNumbers.Substring(6)}",
+            11 =>
+                $"({plainNumbers.Substring(0, 2)}) {plainNumbers.Substring(2, 5)}-{plainNumbers.Substring(7)}",
+            12 =>
+                $"+{plainNumbers.Substring(0, 2)} ({plainNumbers.Substring(2, 2)}) {plainNumbers.Substring(4, 4)}-{plainNumbers.Substring(8)}",
+            13 =>
+                $"+{plainNumbers.Substring(0, 2)} ({plainNumbers.Substring(2, 2)}) {plainNumbers.Substring(4, 5)}-{plainNumbers.Substring(9)}",
+            
+            _ => plainNumbers = "FORMATTING ERROR"
+        };
+    }
 
     private void EditContact(object? sender, RoutedEventArgs e)
     {
         if (string.IsNullOrWhiteSpace(txtNome.Text) || string.IsNullOrWhiteSpace(txtTelefone.Text)) return;
+        if (txtTelefone.Text.Length < 10 || txtTelefone.Text.Length > 13)
+        {
+            Console.WriteLine("/!\\ O usuário tentou inserir um número de telefone com menos de 10 caracteres ou mais de 13 caracteres.");
+            return;
+        }
 
-        _contatoAntesEdicao.Nome = txtNome.Text;
-        _contatoAntesEdicao.Telefone = txtTelefone.Text;
-        
+        if (MatchesRegexValidation())
+        {
+            string txtTelefoneEditadoFormatado = FormatPhoneNumber(txtTelefone.Text);
+            _contatoAntesEdicao.Nome = txtNome.Text;
+            _contatoAntesEdicao.Telefone = txtTelefoneEditadoFormatado;
+        }
+        else
+        {
+            Console.WriteLine("/!\\ O usuário tentou inserir um número de telefone que contém caracteres especiais.");
+        }
+
         try 
         {
-            // 2. Persiste a alteração no SQLite usando o ID original
             _db.UpdateContact(_contatoAntesEdicao);
             
             this.Close();
         }
         catch (System.Exception ex)
         {
-            System.Console.WriteLine($"/!\\ Erro ao atualizar no banco: {ex.Message}");
+            bool errorCausedByNotMatchingRegex = ex.Message.Contains("Object reference not set to an instance of an object");
+            if (!errorCausedByNotMatchingRegex)
+            {
+                Console.WriteLine($"/!\\ {ex.Message}");
+            }
         }
     }
 }
